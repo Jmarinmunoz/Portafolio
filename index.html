@@ -5,95 +5,161 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Joaquín Marín Muñoz | Portafolio</title>
 
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+  <meta name="description" content="Portafolio de Joaquín Marín Muñoz, Ingeniero en Informática fullstack especializado en sistemas empresariales." />
+  <meta name="author" content="Joaquín Marín Muñoz" />
+  <meta property="og:title" content="Joaquín Marín Muñoz | Portafolio" />
+  <meta property="og:description" content="Ingeniero en Informática fullstack especializado en sistemas empresariales, inventario, operaciones y plataformas web." />
+  <meta property="og:type" content="website" />
+
   <style>
+    /* ── Variables ── */
     :root {
-      --bg: #070b14;
-      --bg-soft: #0d1424;
-      --card: rgba(255,255,255,.06);
-      --card-border: rgba(255,255,255,.12);
-      --text: #f5f7fb;
-      --muted: #a7b0c0;
-      --blue: #3b82f6;
-      --cyan: #22d3ee;
-      --green: #22c55e;
-      --radius: 22px;
+      --bg:          #070b14;
+      --card:        rgba(255,255,255,.055);
+      --card-border: rgba(255,255,255,.10);
+      --text:        #f0f4ff;
+      --muted:       #8b97b0;
+      --blue:        #3b82f6;
+      --cyan:        #22d3ee;
+      --green:       #22c55e;
+      --purple:      #a78bfa;
+      --radius:      20px;
+      --glow-blue:   rgba(59,130,246,.18);
+      --glow-cyan:   rgba(34,211,238,.14);
     }
 
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(59,130,246,.25), transparent 35%),
-        radial-gradient(circle at top right, rgba(34,211,238,.16), transparent 35%),
-        var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      background: var(--bg);
       color: var(--text);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    /* Ambient blobs */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 10% 0%,   rgba(59,130,246,.20) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 35% at 90% 5%,   rgba(34,211,238,.13) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 50% 100%, rgba(167,139,250,.10) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
     }
 
+    main, header, footer { position: relative; z-index: 1; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Header ── */
     header {
       position: sticky;
       top: 0;
       z-index: 50;
-      backdrop-filter: blur(18px);
-      background: rgba(7, 11, 20, .75);
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      background: rgba(7,11,20,.72);
+      border-bottom: 1px solid rgba(255,255,255,.07);
     }
 
     .nav {
-      max-width: 1180px;
+      max-width: 1200px;
       margin: auto;
-      padding: 18px 22px;
+      padding: 15px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 16px;
     }
 
     .logo {
+      font-size: 15px;
       font-weight: 800;
-      letter-spacing: .5px;
+      letter-spacing: .4px;
+      white-space: nowrap;
     }
-
-    .logo span {
-      color: var(--cyan);
-    }
+    .logo span { color: var(--cyan); }
 
     .nav-links {
       display: flex;
-      gap: 22px;
-      font-size: 14px;
+      gap: 24px;
+      font-size: 13.5px;
       color: var(--muted);
+      align-items: center;
+    }
+    .nav-links a { transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    .btn-nav-cv {
+      padding: 8px 18px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: #03111f;
+      transition: opacity .2s, transform .2s;
+      white-space: nowrap;
+    }
+    .btn-nav-cv:hover { opacity: .85; transform: translateY(-1px); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: .25s;
     }
 
-    .nav-links a:hover {
-      color: var(--text);
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      padding: 16px 24px 22px;
+      flex-direction: column;
+      gap: 18px;
+      font-size: 15px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,.07);
     }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a:hover { color: var(--text); }
 
+    /* ── Container ── */
     .container {
-      max-width: 1180px;
+      max-width: 1200px;
       margin: auto;
-      padding: 0 22px;
+      padding: 0 24px;
     }
 
+    /* ── Hero ── */
     .hero {
-      min-height: 86vh;
+      min-height: 88vh;
       display: grid;
       align-items: center;
-      padding: 80px 0;
+      padding: 80px 0 60px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 40px;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 48px;
       align-items: center;
     }
 
@@ -101,271 +167,654 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 9px 14px;
-      border: 1px solid rgba(255,255,255,.14);
+      padding: 8px 16px;
+      border: 1px solid rgba(34,211,238,.22);
       border-radius: 999px;
-      color: var(--muted);
-      background: rgba(255,255,255,.05);
-      font-size: 14px;
+      color: var(--cyan);
+      background: rgba(34,211,238,.06);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .2px;
+    }
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+      box-shadow: 0 0 8px var(--green);
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50%       { transform: scale(.75); opacity: .55; }
     }
 
     .hero h1 {
-      font-size: clamp(42px, 6vw, 72px);
-      line-height: 1;
-      margin: 24px 0 18px;
-      letter-spacing: -2px;
+      font-size: clamp(40px, 5.5vw, 70px);
+      line-height: 1.02;
+      margin: 22px 0 16px;
+      letter-spacing: -2.5px;
+      font-weight: 900;
     }
-
     .hero h1 span {
-      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      background: linear-gradient(100deg, var(--blue), var(--cyan) 60%, var(--purple));
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
+      filter: drop-shadow(0 0 24px rgba(59,130,246,.35));
     }
 
-    .hero p {
-      max-width: 680px;
+    .hero-desc {
       color: var(--muted);
-      font-size: 18px;
-      line-height: 1.7;
+      font-size: 17px;
+      line-height: 1.75;
+      max-width: 520px;
     }
 
     .hero-actions {
       margin-top: 32px;
       display: flex;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: 14px 18px;
-      border-radius: 14px;
+      padding: 13px 20px;
+      border-radius: 13px;
       font-weight: 700;
-      border: 1px solid rgba(255,255,255,.14);
-      transition: .25s;
+      font-size: 14px;
+      border: 1px solid transparent;
+      transition: transform .22s, box-shadow .22s, opacity .22s;
+      cursor: pointer;
+      display: inline-block;
     }
-
     .btn-primary {
       background: linear-gradient(135deg, var(--blue), var(--cyan));
       color: #03111f;
+      box-shadow: 0 4px 24px rgba(59,130,246,.3);
     }
-
-    .btn-secondary {
-      background: rgba(255,255,255,.05);
-      color: var(--text);
-    }
-
-    .btn:hover {
+    .btn-primary:hover {
       transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(59,130,246,.45);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      border-color: rgba(255,255,255,.12);
+    }
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.22);
     }
 
+    /* Hero card */
     .hero-card {
-      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.035));
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 26px;
-      box-shadow: 0 24px 80px rgba(0,0,0,.35);
+      background: linear-gradient(160deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 32px 80px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.08);
+      backdrop-filter: blur(12px);
     }
 
     .metric {
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.055);
-      border: 1px solid rgba(255,255,255,.08);
-      margin-bottom: 14px;
+      padding: 18px 20px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.07);
+      margin-bottom: 12px;
+      transition: background .2s;
     }
-
+    .metric:last-child { margin-bottom: 0; }
+    .metric:hover { background: rgba(255,255,255,.07); }
     .metric strong {
       display: block;
       font-size: 26px;
-      margin-bottom: 4px;
-    }
-
-    .metric span {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    section {
-      padding: 82px 0;
-    }
-
-    .section-head {
-      margin-bottom: 34px;
-    }
-
-    .section-head h2 {
-      font-size: 34px;
-      margin: 0 0 10px;
+      font-weight: 900;
       letter-spacing: -1px;
+      background: linear-gradient(90deg, var(--text), var(--cyan));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 3px;
     }
+    .metric span { color: var(--muted); font-size: 13px; }
 
+    /* ── Sections ── */
+    section { padding: 88px 0; }
+
+    .section-head { margin-bottom: 36px; }
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 10px;
+    }
+    .section-head h2 {
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin-bottom: 10px;
+      line-height: 1.1;
+    }
+    .section-head h2 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
     .section-head p {
       color: var(--muted);
-      margin: 0;
-      max-width: 720px;
-      line-height: 1.7;
+      max-width: 620px;
+      line-height: 1.72;
+      font-size: 15.5px;
     }
 
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
+    /* ── About ── */
+    .about { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
     .panel {
       background: var(--card);
       border: 1px solid var(--card-border);
       border-radius: var(--radius);
-      padding: 26px;
+      padding: 28px;
+      transition: border-color .25s, box-shadow .25s;
     }
-
-    .panel p {
-      color: var(--muted);
-      line-height: 1.7;
+    .panel:hover {
+      border-color: rgba(59,130,246,.28);
+      box-shadow: 0 8px 32px var(--glow-blue);
     }
-
-    .stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+    .panel h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text);
     }
+    .panel p { color: var(--muted); line-height: 1.72; font-size: 15px; }
 
-    .tag {
-      padding: 9px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      color: #dce8ff;
-      background: rgba(59,130,246,.12);
-      border: 1px solid rgba(59,130,246,.25);
+    /* ── Timeline ── */
+    .timeline { position: relative; padding-left: 30px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 10px;
+      bottom: 10px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--blue), var(--cyan), transparent);
+      border-radius: 2px;
     }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+    .timeline-item { position: relative; margin-bottom: 24px; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -26px;
+      top: 22px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 12px rgba(34,211,238,.5);
     }
-
-    .project-card {
-      overflow: hidden;
+    .timeline-content {
       background: var(--card);
       border: 1px solid var(--card-border);
       border-radius: var(--radius);
-      transition: .3s;
+      padding: 24px 26px;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .timeline-content:hover {
+      border-color: rgba(34,211,238,.25);
+      box-shadow: 0 8px 32px var(--glow-cyan);
+    }
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .timeline-header h3 { font-size: 19px; font-weight: 700; }
+    .timeline-company {
+      display: block;
+      color: var(--cyan);
+      font-size: 13.5px;
+      font-weight: 600;
+      margin-top: 3px;
+    }
+    .timeline-date {
+      font-size: 12.5px;
+      color: var(--muted);
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      white-space: nowrap;
+    }
+    .timeline-content p {
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 15px;
+      margin-bottom: 16px;
     }
 
+    /* ── Stack ── */
+    .stack { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag {
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #c7d8ff;
+      background: rgba(59,130,246,.10);
+      border: 1px solid rgba(59,130,246,.22);
+    }
+
+    .stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .stack-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .stack-card::before {
+      content: '';
+      position: absolute;
+      top: -40px; left: -40px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(34,211,238,.12), transparent 70%);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .stack-card:hover::before { opacity: 1; }
+    .stack-card:hover {
+      border-color: rgba(34,211,238,.28);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px var(--glow-cyan);
+    }
+    .stack-card h3 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 10px;
+    }
+    .stack-card p {
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.65;
+    }
+
+    /* ── Projects ── */
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color .3s, box-shadow .3s, transform .3s;
+    }
     .project-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(34,211,238,.35);
-      box-shadow: 0 20px 70px rgba(0,0,0,.35);
+      transform: translateY(-7px);
+      border-color: rgba(34,211,238,.3);
+      box-shadow: 0 24px 72px rgba(0,0,0,.4), 0 0 0 1px rgba(34,211,238,.12);
     }
 
-    .project-img {
-      height: 230px;
+    /* Carousel */
+    .carousel {
+      position: relative;
+      height: 234px;
       background:
-        linear-gradient(135deg, rgba(59,130,246,.28), rgba(34,211,238,.18)),
-        linear-gradient(180deg, #111827, #020617);
+        linear-gradient(135deg, rgba(59,130,246,.25), rgba(34,211,238,.15)),
+        linear-gradient(180deg, #0d1727, #020610);
+      overflow: hidden;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity .45s ease;
+    }
+    .carousel-slide.active { opacity: 1; }
+
+    .c-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(7,11,20,.7);
+      color: #fff;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255,255,255,.72);
-      font-weight: 800;
+      opacity: 0;
+      transition: opacity .2s, background .2s;
+      backdrop-filter: blur(6px);
+    }
+    .c-prev { left: 10px; }
+    .c-next { right: 10px; }
+    .carousel:hover .c-btn { opacity: 1; }
+    .c-btn:hover { background: rgba(59,130,246,.55); border-color: var(--cyan); }
+
+    .c-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 5px;
+      z-index: 5;
+    }
+    .c-dot {
+      height: 5px;
+      width: 5px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.4);
+      cursor: pointer;
+      transition: width .25s, background .25s;
+    }
+    .c-dot.active { width: 18px; background: #fff; }
+
+    /* Placeholder for projects with no screenshots */
+    .proj-placeholder {
+      height: 234px;
+      background:
+        linear-gradient(135deg, rgba(59,130,246,.25), rgba(34,211,238,.15)),
+        linear-gradient(180deg, #0d1727, #020610);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.5);
+      font-size: 14px;
+      font-weight: 700;
       letter-spacing: .5px;
       text-align: center;
       padding: 20px;
+      flex-shrink: 0;
     }
 
+    /* Show carousel arrows on touch devices */
+    @media (hover: none) { .c-btn { opacity: .75 !important; } }
+
+    /* Project body */
     .project-body {
-      padding: 24px;
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
-
-    .project-body h3 {
-      margin: 0 0 10px;
-      font-size: 23px;
+    .project-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
     }
-
-    .project-body p {
+    .project-title-row h3 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -.5px;
+    }
+    .badge-tesis {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--cyan);
+      border: 1px solid rgba(34,211,238,.38);
+      border-radius: 999px;
+      padding: 2px 9px;
+      white-space: nowrap;
+    }
+    .project-body > p {
       color: var(--muted);
-      line-height: 1.65;
-      margin: 0 0 18px;
+      font-size: 14px;
+      line-height: 1.68;
+      flex: 1;
+      margin-bottom: 16px;
     }
-
     .project-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 7px;
+      margin-bottom: 18px;
     }
-
     .mini-tag {
-      font-size: 12px;
-      padding: 7px 10px;
+      font-size: 11.5px;
+      padding: 5px 10px;
       border-radius: 999px;
-      background: rgba(255,255,255,.07);
-      color: #d8e2f0;
-      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.06);
+      color: #c4d4f0;
+      border: 1px solid rgba(255,255,255,.09);
     }
+    .project-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-demo {
+      padding: 9px 18px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: #03111f;
+      display: inline-block;
+      transition: opacity .2s, transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 16px rgba(59,130,246,.28);
+    }
+    .btn-demo:hover { opacity: .85; transform: translateY(-2px); box-shadow: 0 6px 22px rgba(59,130,246,.4); }
 
+    /* ── Contact ── */
     .contact {
       text-align: center;
-      background: linear-gradient(135deg, rgba(59,130,246,.13), rgba(34,211,238,.08));
-      border: 1px solid rgba(255,255,255,.1);
+      background: linear-gradient(135deg, rgba(59,130,246,.10), rgba(34,211,238,.06));
+      border: 1px solid rgba(255,255,255,.10);
       border-radius: 28px;
-      padding: 46px 24px;
+      padding: 52px 28px;
+    }
+    .contact h2 {
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin-bottom: 10px;
+    }
+    .contact p { color: var(--muted); font-size: 15.5px; margin-bottom: 0; }
+    .contact-actions {
+      margin-top: 28px;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
-    .contact p {
-      color: var(--muted);
-    }
-
+    /* ── Footer ── */
     footer {
       padding: 32px;
       color: var(--muted);
       text-align: center;
-      border-top: 1px solid rgba(255,255,255,.08);
+      font-size: 13.5px;
+      border-top: 1px solid rgba(255,255,255,.07);
     }
 
-    @media (max-width: 850px) {
-      .hero-grid,
-      .about,
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
+    /* ── Lightbox ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(4,7,14,.94);
+      backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: center;
+      animation: lb-in .2s ease;
+    }
+    .lightbox.open { display: flex; }
+    @keyframes lb-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .lb-img {
+      max-width: min(90vw, 1100px);
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 14px;
+      box-shadow: 0 32px 100px rgba(0,0,0,.6);
+      user-select: none;
+    }
+    .lb-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 50%;
+      width: 40px; height: 40px;
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s;
+    }
+    .lb-close:hover { background: rgba(255,255,255,.18); }
+    .lb-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 50%;
+      width: 50px; height: 50px;
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s, transform .2s;
+      user-select: none;
+    }
+    .lb-nav:hover { background: rgba(255,255,255,.16); transform: translateY(-50%) scale(1.08); }
+    #lb-prev { left: 20px; }
+    #lb-next { right: 20px; }
+    .lb-counter {
+      position: absolute;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,.5);
+      font-size: 13px;
+      letter-spacing: .5px;
+      background: rgba(0,0,0,.4);
+      padding: 4px 14px;
+      border-radius: 999px;
+    }
 
-      .nav-links {
-        display: none;
-      }
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-      .hero {
-        min-height: auto;
-      }
+    /* ── Responsive ── */
+    @media (max-width: 1060px) {
+      .stack-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 860px) {
+      .hero-grid, .about, .projects-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { min-height: auto; }
+    }
+    @media (max-width: 550px) {
+      .stack-grid { grid-template-columns: 1fr 1fr; }
+      #lb-prev { left: 8px; }
+      #lb-next { right: 8px; }
+      .lb-nav { width: 40px; height: 40px; font-size: 22px; }
+    }
+    @media (max-width: 360px) {
+      .stack-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
 
+<!-- ── Lightbox (global) ── -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lb-close" id="lb-close" aria-label="Cerrar">&#x2715;</button>
+  <button class="lb-nav" id="lb-prev" aria-label="Anterior">&#8249;</button>
+  <img class="lb-img" id="lb-img" src="" alt="Vista previa" />
+  <button class="lb-nav" id="lb-next" aria-label="Siguiente">&#8250;</button>
+  <span class="lb-counter" id="lb-counter"></span>
+</div>
+
+<!-- ── Header ── -->
 <header>
   <nav class="nav">
     <div class="logo">Portafolio Profesional<span>.</span></div>
     <div class="nav-links">
       <a href="#sobre-mi">Sobre mí</a>
+      <a href="#experiencia">Experiencia</a>
       <a href="#stack">Stack</a>
       <a href="#proyectos">Proyectos</a>
       <a href="#contacto">Contacto</a>
+      <a class="btn-nav-cv" href="Marin_Joaquin_CV_Profesional.pdf.pdf" download>Descargar CV</a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#experiencia">Experiencia</a>
+    <a href="#stack">Stack</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#contacto">Contacto</a>
+    <a href="Marin_Joaquin_CV_Profesional.pdf.pdf" download style="color:var(--cyan);font-weight:700;">Descargar CV</a>
+  </div>
 </header>
 
 <main>
 
+  <!-- ── Hero ── -->
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <div class="badge">Ingeniero en Informática · Fullstack Developer</div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Disponible para oportunidades · Fullstack Developer
+        </div>
 
         <h1>Desarrollo sistemas <span>empresariales</span> modernos.</h1>
 
-        <p>
+        <p class="hero-desc">
           Soy Joaquín Marín Muñoz, Ingeniero en Informática orientado al desarrollo
           de plataformas web, sistemas administrativos, inventario, operaciones, POS,
           reportes y soluciones internas para empresas.
@@ -373,21 +822,20 @@
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
+          <a class="btn btn-secondary" href="Marin_Joaquin_CV_Profesional.pdf.pdf" download>Descargar CV</a>
           <a class="btn btn-secondary" href="#contacto">Contactar</a>
         </div>
       </div>
 
       <div class="hero-card">
         <div class="metric">
-          <strong>6+</strong>
+          <strong data-count="6">0</strong>
           <span>Proyectos desarrollados o mejorados</span>
         </div>
-
         <div class="metric">
           <strong>Fullstack</strong>
           <span>Frontend, backend, base de datos y lógica de negocio</span>
         </div>
-
         <div class="metric">
           <strong>Empresarial</strong>
           <span>Inventario, logística, POS, flota, reportes y operaciones</span>
@@ -396,96 +844,120 @@
     </div>
   </section>
 
+  <!-- ── Sobre mí ── -->
   <section id="sobre-mi">
     <div class="container">
-      <div class="section-head">
-        <h2>Sobre mí</h2>
-        <p>
-          Perfil orientado a crear soluciones prácticas para procesos reales de negocio,
-          combinando desarrollo web, bases de datos, soporte TI y mejora continua.
-        </p>
+      <div class="section-head reveal">
+        <span class="section-label">Perfil</span>
+        <h2>Sobre <em>mí</em></h2>
+        <p>Perfil orientado a crear soluciones prácticas para procesos reales de negocio, combinando desarrollo web, bases de datos, soporte TI y mejora continua.</p>
       </div>
-
       <div class="about">
-        <div class="panel">
+        <div class="panel reveal">
           <h3>Perfil profesional</h3>
-          <p>
-            Ingeniero en Informática con experiencia en desarrollo de aplicaciones web,
-            soporte TI, consultas SQL, mantenimiento de sistemas y creación de soluciones
-            internas para entornos empresariales.
-          </p>
+          <p>Ingeniero en Informática titulado de Duoc UC, con experiencia en desarrollo de aplicaciones web, soporte TI, consultas SQL, mantenimiento de sistemas y creación de soluciones internas para entornos empresariales.</p>
         </div>
-
-        <div class="panel">
+        <div class="panel reveal">
           <h3>Enfoque</h3>
-          <p>
-            Me especializo en sistemas de gestión, inventario, operaciones, dashboards,
-            autenticación de usuarios, roles, filtros avanzados, reportes y trazabilidad
-            de procesos.
-          </p>
+          <p>Me especializo en sistemas de gestión, inventario, operaciones, dashboards, autenticación de usuarios, roles, filtros avanzados, reportes y trazabilidad de procesos.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ── Experiencia ── -->
+  <section id="experiencia">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">Trayectoria</span>
+        <h2>Experiencia <em>laboral</em></h2>
+        <p>Participación en entornos reales relacionados con tecnología, soporte TI y desarrollo de sistemas.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3>Práctica Profesional</h3>
+                <span class="timeline-company">Agrofruta</span>
+              </div>
+              <span class="timeline-date">Abr 2026 — Jun 2026</span>
+            </div>
+            <p>Soporte técnico a usuarios finales, resolución de incidencias y capacitación en el uso correcto de equipos y sistemas. Participé en el desarrollo y mejora de sistemas internos, realizando conexiones y consultas en bases de datos SQL, con uso de herramientas como Pragmatic.</p>
+            <div class="stack">
+              <span class="tag">SQL</span>
+              <span class="tag">Soporte TI</span>
+              <span class="tag">Sistemas Internos</span>
+              <span class="tag">Pragmatic</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Stack ── -->
   <section id="stack">
     <div class="container">
-
-        <div class="section-head">
-            <h2>Stack tecnológico</h2>
-            <p>
-                Tecnologías utilizadas en desarrollo fullstack, plataformas empresariales
-                y sistemas operacionales.
-            </p>
+      <div class="section-head reveal">
+        <span class="section-label">Tecnologías</span>
+        <h2>Stack <em>tecnológico</em></h2>
+        <p>Tecnologías utilizadas en desarrollo fullstack, plataformas empresariales y sistemas operacionales.</p>
+      </div>
+      <div class="stack-grid">
+        <div class="stack-card reveal">
+          <h3>Frontend</h3>
+          <p>React, TypeScript, TailwindCSS, Bootstrap, JavaScript, Vite.</p>
         </div>
-
-        <div class="stack-grid">
-
-            <div class="stack-card">
-                <h3>Frontend</h3>
-                <p>React, TypeScript, TailwindCSS, Bootstrap, JavaScript, Vite.</p>
-            </div>
-
-            <div class="stack-card">
-                <h3>Backend</h3>
-                <p>Node.js, Express, Laravel, PHP, APIs REST, autenticación JWT.</p>
-            </div>
-
-            <div class="stack-card">
-                <h3>Base de Datos</h3>
-                <p>PostgreSQL, MySQL, SQLite, MSSQL, Prisma ORM, Eloquent ORM.</p>
-            </div>
-
-            <div class="stack-card">
-                <h3>Herramientas</h3>
-                <p>Git, GitHub Actions, ExcelJS, PDFKit, Nodemailer, ODBC.</p>
-            </div>
-
+        <div class="stack-card reveal">
+          <h3>Backend</h3>
+          <p>Node.js, Express, Laravel, PHP, APIs REST, autenticación JWT.</p>
         </div>
-
+        <div class="stack-card reveal">
+          <h3>Base de Datos</h3>
+          <p>PostgreSQL, MySQL, SQLite, MSSQL, Prisma ORM, Eloquent ORM.</p>
+        </div>
+        <div class="stack-card reveal">
+          <h3>Herramientas</h3>
+          <p>Git, GitHub Actions, ExcelJS, PDFKit, Nodemailer, ODBC.</p>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- ── Proyectos ── -->
   <section id="proyectos">
     <div class="container">
-      <div class="section-head">
-        <h2>Proyectos destacados</h2>
-        <p>
-          Sistemas desarrollados y mejorados con foco en operación, gestión, inventario,
-          trazabilidad, reportes y procesos empresariales.
-        </p>
+      <div class="section-head reveal">
+        <span class="section-label">Portafolio</span>
+        <h2>Proyectos <em>destacados</em></h2>
+        <p>Sistemas desarrollados y mejorados con foco en operación, gestión, inventario, trazabilidad, reportes y procesos empresariales.</p>
       </div>
 
       <div class="projects-grid">
 
-        <article class="project-card">
-          <div class="project-img">Imagen Taller PepsiCo</div>
+        <!-- Taller PepsiCo -->
+        <article class="project-card reveal">
+          <div class="carousel" id="carousel-taller" title="Clic para ampliar">
+            <img class="carousel-slide active" src="images/Taller%20PepsiCo1.png" alt="Taller PepsiCo 1" />
+            <img class="carousel-slide" src="images/Taller%20PepsiCo2.png" alt="Taller PepsiCo 2" />
+            <img class="carousel-slide" src="images/Taller%20PepsiCo3.png" alt="Taller PepsiCo 3" />
+            <img class="carousel-slide" src="images/Taller%20PepsiCo4.png" alt="Taller PepsiCo 4" />
+            <img class="carousel-slide" src="images/Taller%20PepsiCo5.png" alt="Taller PepsiCo 5" />
+            <button class="c-btn c-prev" aria-label="Anterior">&#8249;</button>
+            <button class="c-btn c-next" aria-label="Siguiente">&#8250;</button>
+            <div class="c-dots">
+              <span class="c-dot active"></span><span class="c-dot"></span><span class="c-dot"></span>
+              <span class="c-dot"></span><span class="c-dot"></span>
+            </div>
+          </div>
           <div class="project-body">
-            <h3>Taller PepsiCo</h3>
-            <p>
-              Plataforma web para gestionar operación de taller/flota: ingreso de vehículos,
-              órdenes de trabajo, repuestos, inventario, notificaciones y dashboards por rol.
-            </p>
+            <div class="project-title-row">
+              <h3>Taller PepsiCo</h3>
+              <span class="badge-tesis">Tesis</span>
+            </div>
+            <p>Plataforma web para gestionar operación de taller/flota: ingreso de vehículos, órdenes de trabajo, repuestos, inventario, notificaciones y dashboards por rol.</p>
             <div class="project-tags">
               <span class="mini-tag">React</span>
               <span class="mini-tag">TypeScript</span>
@@ -493,17 +965,18 @@
               <span class="mini-tag">PostgreSQL</span>
               <span class="mini-tag">Prisma</span>
             </div>
+            <div class="project-actions">
+              <a class="btn-demo" href="https://pep-example.vercel.app" target="_blank">Ver demo</a>
+            </div>
           </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-img">Imagen Market Web</div>
+        <!-- Market Web (sin capturas) -->
+        <article class="project-card reveal">
+          <div class="proj-placeholder">Market Web</div>
           <div class="project-body">
-            <h3>Market Web</h3>
-            <p>
-              Sistema multi-local de gestión comercial con inventario, ventas POS,
-              historial de ventas, cambios de precios, roles y separación de datos por local.
-            </p>
+            <h3 style="margin-bottom:10px;">Market Web</h3>
+            <p>Sistema multi-local de gestión comercial con inventario, ventas POS, historial de ventas, cambios de precios, roles y separación de datos por local.</p>
             <div class="project-tags">
               <span class="mini-tag">Laravel</span>
               <span class="mini-tag">PHP</span>
@@ -511,17 +984,31 @@
               <span class="mini-tag">Bootstrap</span>
               <span class="mini-tag">DataTables</span>
             </div>
+            <div class="project-actions">
+              <a class="btn-demo" href="#" target="_blank">Ver demo</a>
+            </div>
           </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-img">Imagen Inventario TI</div>
+        <!-- Inventario TI -->
+        <article class="project-card reveal">
+          <div class="carousel" id="carousel-inventario" title="Clic para ampliar">
+            <img class="carousel-slide active" src="images/Inventario0.png" alt="Inventario TI 1" />
+            <img class="carousel-slide" src="images/Inventario1.png" alt="Inventario TI 2" />
+            <img class="carousel-slide" src="images/Inventario2.png" alt="Inventario TI 3" />
+            <img class="carousel-slide" src="images/Inventario3.png" alt="Inventario TI 4" />
+            <img class="carousel-slide" src="images/Inventario4.png" alt="Inventario TI 5" />
+            <img class="carousel-slide" src="images/Inventario5.png" alt="Inventario TI 6" />
+            <button class="c-btn c-prev" aria-label="Anterior">&#8249;</button>
+            <button class="c-btn c-next" aria-label="Siguiente">&#8250;</button>
+            <div class="c-dots">
+              <span class="c-dot active"></span><span class="c-dot"></span><span class="c-dot"></span>
+              <span class="c-dot"></span><span class="c-dot"></span><span class="c-dot"></span>
+            </div>
+          </div>
           <div class="project-body">
-            <h3>Inventario TI</h3>
-            <p>
-              Aplicación web para gestionar activos tecnológicos, asignaciones por área,
-              estado de equipos, historial de cambios, búsqueda, exportación Excel y QR.
-            </p>
+            <h3 style="margin-bottom:10px;">Inventario TI</h3>
+            <p>Aplicación web para gestionar activos tecnológicos, asignaciones por área, estado de equipos, historial de cambios, búsqueda, exportación Excel y QR.</p>
             <div class="project-tags">
               <span class="mini-tag">Node.js</span>
               <span class="mini-tag">Express</span>
@@ -529,17 +1016,18 @@
               <span class="mini-tag">ExcelJS</span>
               <span class="mini-tag">QRCode</span>
             </div>
+            <div class="project-actions">
+              <a class="btn-demo" href="https://jmm-inventario.vercel.app/login" target="_blank">Ver demo</a>
+            </div>
           </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-img">Imagen Sistema Fruta</div>
+        <!-- Sistema Fruta (sin capturas) -->
+        <article class="project-card reveal">
+          <div class="proj-placeholder">Sistema Fruta</div>
           <div class="project-body">
-            <h3>Sistema Fruta</h3>
-            <p>
-              Plataforma interna para operaciones de fruta: pallets, packing, frío,
-              mantenedores, consultas productivas y filtros por planta, especie y fechas.
-            </p>
+            <h3 style="margin-bottom:10px;">Sistema Fruta</h3>
+            <p>Plataforma interna para operaciones de fruta: pallets, packing, frío, mantenedores, consultas productivas y filtros por planta, especie y fechas.</p>
             <div class="project-tags">
               <span class="mini-tag">Node.js</span>
               <span class="mini-tag">Express</span>
@@ -550,14 +1038,12 @@
           </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-img">Imagen Mantenedor de Pallets</div>
+        <!-- Mantenedor de Pallets (sin capturas) -->
+        <article class="project-card reveal">
+          <div class="proj-placeholder">Mantenedor de Pallets</div>
           <div class="project-body">
-            <h3>Mantenedor de Pallets y Exportación</h3>
-            <p>
-              Aplicación interna para consultar y actualizar información operativa de pallets,
-              incorporando filtros avanzados y mejoras de rendimiento para grandes volúmenes de datos.
-            </p>
+            <h3 style="margin-bottom:10px;">Mantenedor de Pallets y Exportación</h3>
+            <p>Aplicación interna para consultar y actualizar información operativa de pallets, incorporando filtros avanzados y mejoras de rendimiento para grandes volúmenes de datos.</p>
             <div class="project-tags">
               <span class="mini-tag">Node.js</span>
               <span class="mini-tag">Express</span>
@@ -568,14 +1054,29 @@
           </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-img">Imagen MarketDesktop</div>
+        <!-- MarketDesktop -->
+        <article class="project-card reveal">
+          <div class="carousel" id="carousel-marketdesk" title="Clic para ampliar">
+            <img class="carousel-slide active" src="images/marketDesk1.png" alt="MarketDesktop 1" />
+            <img class="carousel-slide" src="images/marketDesk2.png" alt="MarketDesktop 2" />
+            <img class="carousel-slide" src="images/marketDesk3.png" alt="MarketDesktop 3" />
+            <img class="carousel-slide" src="images/marketDesk4.png" alt="MarketDesktop 4" />
+            <img class="carousel-slide" src="images/marketDesk5.png" alt="MarketDesktop 5" />
+            <img class="carousel-slide" src="images/marketDesk6.png" alt="MarketDesktop 6" />
+            <img class="carousel-slide" src="images/marketDesk7.png" alt="MarketDesktop 7" />
+            <img class="carousel-slide" src="images/marketDesk8.png" alt="MarketDesktop 8" />
+            <img class="carousel-slide" src="images/marketDesk9.png" alt="MarketDesktop 9" />
+            <button class="c-btn c-prev" aria-label="Anterior">&#8249;</button>
+            <button class="c-btn c-next" aria-label="Siguiente">&#8250;</button>
+            <div class="c-dots">
+              <span class="c-dot active"></span><span class="c-dot"></span><span class="c-dot"></span>
+              <span class="c-dot"></span><span class="c-dot"></span><span class="c-dot"></span>
+              <span class="c-dot"></span><span class="c-dot"></span><span class="c-dot"></span>
+            </div>
+          </div>
           <div class="project-body">
-            <h3>MarketDesktop</h3>
-            <p>
-              Primera iteración de sistema POS en formato escritorio, orientado a gestión comercial,
-              productos y operaciones locales, posteriormente evolucionado hacia Market Web.
-            </p>
+            <h3 style="margin-bottom:10px;">MarketDesktop</h3>
+            <p>Primera iteración de sistema POS en formato escritorio, orientado a gestión comercial, productos y operaciones locales, posteriormente evolucionado hacia Market Web.</p>
             <div class="project-tags">
               <span class="mini-tag">Desktop App</span>
               <span class="mini-tag">POS</span>
@@ -589,16 +1090,16 @@
     </div>
   </section>
 
+  <!-- ── Contacto ── -->
   <section id="contacto">
     <div class="container">
-      <div class="contact">
-        <h2>Contacto</h2>
+      <div class="contact reveal">
+        <h2>¿Hablamos?</h2>
         <p>Disponible para oportunidades relacionadas con desarrollo web, sistemas empresariales y soluciones internas.</p>
-
-        <div class="hero-actions" style="justify-content:center;">
+        <div class="contact-actions">
           <a class="btn btn-primary" href="mailto:Jmarinmun@gmail.com">Jmarinmun@gmail.com</a>
-          <a class="btn btn-secondary" href="https://github.com/Ricckyrich">GitHub</a>
-          <a class="btn btn-secondary" href="https://www.linkedin.com/in/joaquin-marin-munoz/">LinkedIn</a>
+          <a class="btn btn-secondary" href="https://github.com/Ricckyrich" target="_blank">GitHub</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/joaquin-marin-munoz/" target="_blank">LinkedIn</a>
         </div>
       </div>
     </div>
@@ -609,6 +1110,162 @@
 <footer>
   © 2026 Joaquín Marín Muñoz · Portafolio Profesional
 </footer>
+
+<script>
+  /* ── Hamburger ── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+  document.addEventListener('click', e => {
+    if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) mobileMenu.classList.remove('open');
+  });
+
+  /* ── Scroll reveal ── */
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); ro.unobserve(en.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+  /* ── Animated counter ── */
+  const co = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      const el = en.target;
+      const target = +el.dataset.count;
+      let cur = 0;
+      const step = target / 60;
+      const t = setInterval(() => {
+        cur = Math.min(cur + step, target);
+        el.textContent = Math.floor(cur) + '+';
+        if (cur >= target) clearInterval(t);
+      }, 16);
+      co.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(el => co.observe(el));
+
+  /* ── Carousel + Lightbox ── */
+  const carousels = {};
+
+  function initCarousel(id, srcs) {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const slides = el.querySelectorAll('.carousel-slide');
+    const dots   = el.querySelectorAll('.c-dot');
+    carousels[id] = { srcs, cur: 0, el, slides, dots };
+
+    el.querySelector('.c-prev').addEventListener('click', e => { e.stopPropagation(); shift(id, -1); });
+    el.querySelector('.c-next').addEventListener('click', e => { e.stopPropagation(); shift(id, +1); });
+    dots.forEach((d, i) => d.addEventListener('click', e => { e.stopPropagation(); goTo(id, i); }));
+
+    // Open lightbox on image click
+    slides.forEach((s, i) => s.addEventListener('click', () => openLightbox(id, i)));
+
+    // Touch swipe
+    let tx = 0;
+    el.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+    el.addEventListener('touchend', e => {
+      const diff = tx - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) shift(id, diff > 0 ? 1 : -1);
+    }, { passive: true });
+  }
+
+  function goTo(id, index) {
+    const c = carousels[id];
+    c.slides[c.cur].classList.remove('active');
+    c.dots[c.cur].classList.remove('active');
+    c.cur = index;
+    c.slides[c.cur].classList.add('active');
+    c.dots[c.cur].classList.add('active');
+  }
+
+  function shift(id, dir) {
+    const c = carousels[id];
+    goTo(id, (c.cur + dir + c.srcs.length) % c.srcs.length);
+  }
+
+  /* Lightbox state */
+  let lbId = '', lbIdx = 0;
+  const lb       = document.getElementById('lightbox');
+  const lbImg    = document.getElementById('lb-img');
+  const lbCtr    = document.getElementById('lb-counter');
+
+  function openLightbox(id, idx) {
+    lbId  = id;
+    lbIdx = idx;
+    renderLb();
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function lbShift(dir) {
+    const srcs = carousels[lbId].srcs;
+    lbIdx = (lbIdx + dir + srcs.length) % srcs.length;
+    renderLb();
+  }
+
+  function renderLb() {
+    const srcs = carousels[lbId].srcs;
+    lbImg.src  = srcs[lbIdx];
+    lbCtr.textContent = `${lbIdx + 1} / ${srcs.length}`;
+  }
+
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  document.getElementById('lb-prev').addEventListener('click', () => lbShift(-1));
+  document.getElementById('lb-next').addEventListener('click', () => lbShift(+1));
+  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')      closeLightbox();
+    if (e.key === 'ArrowLeft')   lbShift(-1);
+    if (e.key === 'ArrowRight')  lbShift(+1);
+  });
+
+  // Lightbox touch swipe
+  let lbTx = 0;
+  lb.addEventListener('touchstart', e => { lbTx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', e => {
+    const diff = lbTx - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) lbShift(diff > 0 ? 1 : -1);
+  }, { passive: true });
+
+  /* Initialize carousels */
+  initCarousel('carousel-taller', [
+    'images/Taller%20PepsiCo1.png',
+    'images/Taller%20PepsiCo2.png',
+    'images/Taller%20PepsiCo3.png',
+    'images/Taller%20PepsiCo4.png',
+    'images/Taller%20PepsiCo5.png',
+  ]);
+
+  initCarousel('carousel-inventario', [
+    'images/Inventario0.png',
+    'images/Inventario1.png',
+    'images/Inventario2.png',
+    'images/Inventario3.png',
+    'images/Inventario4.png',
+    'images/Inventario5.png',
+  ]);
+
+  initCarousel('carousel-marketdesk', [
+    'images/marketDesk1.png',
+    'images/marketDesk2.png',
+    'images/marketDesk3.png',
+    'images/marketDesk4.png',
+    'images/marketDesk5.png',
+    'images/marketDesk6.png',
+    'images/marketDesk7.png',
+    'images/marketDesk8.png',
+    'images/marketDesk9.png',
+  ]);
+</script>
 
 </body>
 </html>
