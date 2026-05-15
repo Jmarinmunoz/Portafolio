@@ -27,6 +27,7 @@ Soporte técnico a usuarios finales, desarrollo y mejora de sistemas internos, c
 
 ## Contacto
 
-- **Email:** Jmarinmun@gmail.com
-- **LinkedIn:** [linkedin.com/in/joaquin-marin-munoz](https://www.linkedin.com/in/joaquin-marin-munoz/)
-- **GitHub:** [github.com/Ricckyrich](https://github.com/Ricckyrich)
+**Joaquín Marín** — Ingeniero en Informática 
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-joaquin--marin--munoz-blue?logo=linkedin)](https://www.linkedin.com/in/joaquin-marin-munoz/)
+[![GitHub](https://img.shields.io/badge/GitHub-Jmarinmunoz-black?logo=github)](https://github.com/Jmarinmunoz)
