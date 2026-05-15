@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joaquín Marín Muñoz | Portafolio</title>
+
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-soft: #0d1424;
+      --card: rgba(255,255,255,.06);
+      --card-border: rgba(255,255,255,.12);
+      --text: #f5f7fb;
+      --muted: #a7b0c0;
+      --blue: #3b82f6;
+      --cyan: #22d3ee;
+      --green: #22c55e;
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(59,130,246,.25), transparent 35%),
+        radial-gradient(circle at top right, rgba(34,211,238,.16), transparent 35%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(7, 11, 20, .75);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .nav {
+      max-width: 1180px;
+      margin: auto;
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: .5px;
+    }
+
+    .logo span {
+      color: var(--cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: auto;
+      padding: 0 22px;
+    }
+
+    .hero {
+      min-height: 86vh;
+      display: grid;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255,255,255,.05);
+      font-size: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1;
+      margin: 24px 0 18px;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      margin-top: 32px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,.14);
+      transition: .25s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: #03111f;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.035));
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.35);
+    }
+
+    .metric {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.08);
+      margin-bottom: 14px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 26px;
+      margin-bottom: 4px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    section {
+      padding: 82px 0;
+    }
+
+    .section-head {
+      margin-bottom: 34px;
+    }
+
+    .section-head h2 {
+      font-size: 34px;
+      margin: 0 0 10px;
+      letter-spacing: -1px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      margin: 0;
+      max-width: 720px;
+      line-height: 1.7;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 26px;
+    }
+
+    .panel p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tag {
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: #dce8ff;
+      background: rgba(59,130,246,.12);
+      border: 1px solid rgba(59,130,246,.25);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .project-card {
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      transition: .3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(34,211,238,.35);
+      box-shadow: 0 20px 70px rgba(0,0,0,.35);
+    }
+
+    .project-img {
+      height: 230px;
+      background:
+        linear-gradient(135deg, rgba(59,130,246,.28), rgba(34,211,238,.18)),
+        linear-gradient(180deg, #111827, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.72);
+      font-weight: 800;
+      letter-spacing: .5px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .project-body {
+      padding: 24px;
+    }
+
+    .project-body h3 {
+      margin: 0 0 10px;
+      font-size: 23px;
+    }
+
+    .project-body p {
+      color: var(--muted);
+      line-height: 1.65;
+      margin: 0 0 18px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .mini-tag {
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.07);
+      color: #d8e2f0;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .contact {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(59,130,246,.13), rgba(34,211,238,.08));
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 28px;
+      padding: 46px 24px;
+    }
+
+    .contact p {
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 32px;
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    @media (max-width: 850px) {
+      .hero-grid,
+      .about,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="logo">Portafolio Profesional<span>.</span></div>
+    <div class="nav-links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#stack">Stack</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="badge">Ingeniero en Informática · Fullstack Developer</div>
+
+        <h1>Desarrollo sistemas <span>empresariales</span> modernos.</h1>
+
+        <p>
+          Soy Joaquín Marín Muñoz, Ingeniero en Informática orientado al desarrollo
+          de plataformas web, sistemas administrativos, inventario, operaciones, POS,
+          reportes y soluciones internas para empresas.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
+          <a class="btn btn-secondary" href="#contacto">Contactar</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="metric">
+          <strong>6+</strong>
+          <span>Proyectos desarrollados o mejorados</span>
+        </div>
+
+        <div class="metric">
+          <strong>Fullstack</strong>
+          <span>Frontend, backend, base de datos y lógica de negocio</span>
+        </div>
+
+        <div class="metric">
+          <strong>Empresarial</strong>
+          <span>Inventario, logística, POS, flota, reportes y operaciones</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre-mi">
+    <div class="container">
+      <div class="section-head">
+        <h2>Sobre mí</h2>
+        <p>
+          Perfil orientado a crear soluciones prácticas para procesos reales de negocio,
+          combinando desarrollo web, bases de datos, soporte TI y mejora continua.
+        </p>
+      </div>
+
+      <div class="about">
+        <div class="panel">
+          <h3>Perfil profesional</h3>
+          <p>
+            Ingeniero en Informática con experiencia en desarrollo de aplicaciones web,
+            soporte TI, consultas SQL, mantenimiento de sistemas y creación de soluciones
+            internas para entornos empresariales.
+          </p>
+        </div>
+
+        <div class="panel">
+          <h3>Enfoque</h3>
+          <p>
+            Me especializo en sistemas de gestión, inventario, operaciones, dashboards,
+            autenticación de usuarios, roles, filtros avanzados, reportes y trazabilidad
+            de procesos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="container">
+
+        <div class="section-head">
+            <h2>Stack tecnológico</h2>
+            <p>
+                Tecnologías utilizadas en desarrollo fullstack, plataformas empresariales
+                y sistemas operacionales.
+            </p>
+        </div>
+
+        <div class="stack-grid">
+
+            <div class="stack-card">
+                <h3>Frontend</h3>
+                <p>React, TypeScript, TailwindCSS, Bootstrap, JavaScript, Vite.</p>
+            </div>
+
+            <div class="stack-card">
+                <h3>Backend</h3>
+                <p>Node.js, Express, Laravel, PHP, APIs REST, autenticación JWT.</p>
+            </div>
+
+            <div class="stack-card">
+                <h3>Base de Datos</h3>
+                <p>PostgreSQL, MySQL, SQLite, MSSQL, Prisma ORM, Eloquent ORM.</p>
+            </div>
+
+            <div class="stack-card">
+                <h3>Herramientas</h3>
+                <p>Git, GitHub Actions, ExcelJS, PDFKit, Nodemailer, ODBC.</p>
+            </div>
+
+        </div>
+
+    </div>
+  </section>
+
+  <section id="proyectos">
+    <div class="container">
+      <div class="section-head">
+        <h2>Proyectos destacados</h2>
+        <p>
+          Sistemas desarrollados y mejorados con foco en operación, gestión, inventario,
+          trazabilidad, reportes y procesos empresariales.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+
+        <article class="project-card">
+          <div class="project-img">Imagen Taller PepsiCo</div>
+          <div class="project-body">
+            <h3>Taller PepsiCo</h3>
+            <p>
+              Plataforma web para gestionar operación de taller/flota: ingreso de vehículos,
+              órdenes de trabajo, repuestos, inventario, notificaciones y dashboards por rol.
+            </p>
+            <div class="project-tags">
+              <span class="mini-tag">React</span>
+              <span class="mini-tag">TypeScript</span>
+              <span class="mini-tag">Node.js</span>
+              <span class="mini-tag">PostgreSQL</span>
+              <span class="mini-tag">Prisma</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-img">Imagen Market Web</div>
+          <div class="project-body">
+            <h3>Market Web</h3>
+            <p>
+              Sistema multi-local de gestión comercial con inventario, ventas POS,
+              historial de ventas, cambios de precios, roles y separación de datos por local.
+            </p>
+            <div class="project-tags">
+              <span class="mini-tag">Laravel</span>
+              <span class="mini-tag">PHP</span>
+              <span class="mini-tag">MySQL</span>
+              <span class="mini-tag">Bootstrap</span>
+              <span class="mini-tag">DataTables</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-img">Imagen Inventario TI</div>
+          <div class="project-body">
+            <h3>Inventario TI</h3>
+            <p>
+              Aplicación web para gestionar activos tecnológicos, asignaciones por área,
+              estado de equipos, historial de cambios, búsqueda, exportación Excel y QR.
+            </p>
+            <div class="project-tags">
+              <span class="mini-tag">Node.js</span>
+              <span class="mini-tag">Express</span>
+              <span class="mini-tag">SQLite</span>
+              <span class="mini-tag">ExcelJS</span>
+              <span class="mini-tag">QRCode</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-img">Imagen Sistema Fruta</div>
+          <div class="project-body">
+            <h3>Sistema Fruta</h3>
+            <p>
+              Plataforma interna para operaciones de fruta: pallets, packing, frío,
+              mantenedores, consultas productivas y filtros por planta, especie y fechas.
+            </p>
+            <div class="project-tags">
+              <span class="mini-tag">Node.js</span>
+              <span class="mini-tag">Express</span>
+              <span class="mini-tag">EJS</span>
+              <span class="mini-tag">MSSQL</span>
+              <span class="mini-tag">ODBC</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-img">Imagen Mantenedor de Pallets</div>
+          <div class="project-body">
+            <h3>Mantenedor de Pallets y Exportación</h3>
+            <p>
+              Aplicación interna para consultar y actualizar información operativa de pallets,
+              incorporando filtros avanzados y mejoras de rendimiento para grandes volúmenes de datos.
+            </p>
+            <div class="project-tags">
+              <span class="mini-tag">Node.js</span>
+              <span class="mini-tag">Express</span>
+              <span class="mini-tag">ODBC</span>
+              <span class="mini-tag">SQL</span>
+              <span class="mini-tag">JavaScript</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-img">Imagen MarketDesktop</div>
+          <div class="project-body">
+            <h3>MarketDesktop</h3>
+            <p>
+              Primera iteración de sistema POS en formato escritorio, orientado a gestión comercial,
+              productos y operaciones locales, posteriormente evolucionado hacia Market Web.
+            </p>
+            <div class="project-tags">
+              <span class="mini-tag">Desktop App</span>
+              <span class="mini-tag">POS</span>
+              <span class="mini-tag">Node.js</span>
+              <span class="mini-tag">SQLite</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="container">
+      <div class="contact">
+        <h2>Contacto</h2>
+        <p>Disponible para oportunidades relacionadas con desarrollo web, sistemas empresariales y soluciones internas.</p>
+
+        <div class="hero-actions" style="justify-content:center;">
+          <a class="btn btn-primary" href="mailto:Jmarinmun@gmail.com">Jmarinmun@gmail.com</a>
+          <a class="btn btn-secondary" href="https://github.com/Ricckyrich">GitHub</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/joaquin-marin-munoz/">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Joaquín Marín Muñoz · Portafolio Profesional
+</footer>
+
+</body>
+</html>
