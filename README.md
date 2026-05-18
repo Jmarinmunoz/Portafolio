@@ -2,6 +2,8 @@
 
 Portafolio profesional de **Joaquín Marín Muñoz**, Ingeniero en Informática especializado en desarrollo fullstack de sistemas empresariales.
 
+🔗 [Portafolio](https://jmarinmunoz.github.io/Portafolio/)
+
 ## Stack tecnológico
 
 **Frontend:** React · TypeScript · TailwindCSS · Bootstrap · JavaScript · Vite  
