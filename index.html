@@ -1040,9 +1040,24 @@
           </div>
         </article>
 
-        <!-- Sistema Fruta (sin capturas) -->
+        <!-- Sistema Fruta -->
         <article class="project-card reveal">
-          <div class="proj-placeholder">Sistema Fruta</div>
+          <div class="carousel" id="carousel-sistemafruta" title="Clic para ampliar">
+            <img class="carousel-slide active" src="images/SistemaFruta1.png" alt="Sistema Fruta — Menú principal" />
+            <img class="carousel-slide" src="images/SistemaFruta2.png" alt="Sistema Fruta — Pallets en packing" loading="lazy" />
+            <img class="carousel-slide" src="images/SistemaFruta3.png" alt="Sistema Fruta — Pallets en frío" loading="lazy" />
+            <img class="carousel-slide" src="images/SistemaFruta4.png" alt="Sistema Fruta — Mantenedor de estatus" loading="lazy" />
+            <img class="carousel-slide" src="images/SistemaFruta5.png" alt="Sistema Fruta — Mantenedor de lote por cámara" loading="lazy" />
+            <img class="carousel-slide" src="images/SistemaFruta6.png" alt="Sistema Fruta — Mantenedor de lote por tipo de frío" loading="lazy" />
+            <img class="carousel-slide" src="images/SistemaFruta7.png" alt="Sistema Fruta — Inicio de sesión" loading="lazy" />
+            <button class="c-btn c-prev" aria-label="Anterior">&#8249;</button>
+            <button class="c-btn c-next" aria-label="Siguiente">&#8250;</button>
+            <div class="c-dots">
+              <span class="c-dot active"></span><span class="c-dot"></span><span class="c-dot"></span>
+              <span class="c-dot"></span><span class="c-dot"></span><span class="c-dot"></span>
+              <span class="c-dot"></span>
+            </div>
+          </div>
           <div class="project-body">
             <h3 style="margin-bottom:10px;">Sistema Fruta</h3>
             <p>Plataforma interna para operaciones de fruta: pallets, packing, frío, mantenedores, consultas productivas y filtros por planta, especie y fechas.</p>
@@ -1056,9 +1071,21 @@
           </div>
         </article>
 
-        <!-- Mantenedor de Pallets (sin capturas) -->
+        <!-- Mantenedor de Pallets -->
         <article class="project-card reveal">
-          <div class="proj-placeholder">Mantenedor de Pallets</div>
+          <div class="carousel" id="carousel-mantenedor" title="Clic para ampliar">
+            <img class="carousel-slide active" src="images/Mantenedor1.png" alt="Mantenedor de Pallets — Panel principal" />
+            <img class="carousel-slide" src="images/Mantenedor2.png" alt="Mantenedor de Pallets — Pallets en packing" loading="lazy" />
+            <img class="carousel-slide" src="images/Mantenedor3.png" alt="Mantenedor de Pallets — Asignación de cajas" loading="lazy" />
+            <img class="carousel-slide" src="images/Mantenedor4.png" alt="Mantenedor de Pallets — Pallets en frío" loading="lazy" />
+            <img class="carousel-slide" src="images/Mantenedor5.png" alt="Mantenedor de Pallets — Inicio de sesión" loading="lazy" />
+            <button class="c-btn c-prev" aria-label="Anterior">&#8249;</button>
+            <button class="c-btn c-next" aria-label="Siguiente">&#8250;</button>
+            <div class="c-dots">
+              <span class="c-dot active"></span><span class="c-dot"></span><span class="c-dot"></span>
+              <span class="c-dot"></span><span class="c-dot"></span>
+            </div>
+          </div>
           <div class="project-body">
             <h3 style="margin-bottom:10px;">Mantenedor de Pallets y Exportación</h3>
             <p>Aplicación interna para consultar y actualizar información operativa de pallets, incorporando filtros avanzados y mejoras de rendimiento para grandes volúmenes de datos.</p>
@@ -1282,6 +1309,24 @@
     'images/Inventario3.png',
     'images/Inventario4.png',
     'images/Inventario5.png',
+  ]);
+
+  initCarousel('carousel-sistemafruta', [
+    'images/SistemaFruta1.png',
+    'images/SistemaFruta2.png',
+    'images/SistemaFruta3.png',
+    'images/SistemaFruta4.png',
+    'images/SistemaFruta5.png',
+    'images/SistemaFruta6.png',
+    'images/SistemaFruta7.png',
+  ]);
+
+  initCarousel('carousel-mantenedor', [
+    'images/Mantenedor1.png',
+    'images/Mantenedor2.png',
+    'images/Mantenedor3.png',
+    'images/Mantenedor4.png',
+    'images/Mantenedor5.png',
   ]);
 
   initCarousel('carousel-marketdesk', [
