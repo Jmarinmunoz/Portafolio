@@ -239,6 +239,13 @@
       transform: translateY(-3px);
       box-shadow: 0 8px 32px rgba(59,130,246,.45);
     }
+    /* CAMBIO RECLUTAMIENTO: CTA de contacto con mayor jerarquía visual. */
+    .btn-contact {
+      box-shadow: 0 6px 30px rgba(34,211,238,.38), 0 0 0 1px rgba(34,211,238,.22);
+    }
+    .btn-contact:hover {
+      box-shadow: 0 10px 38px rgba(34,211,238,.52), 0 0 0 1px rgba(34,211,238,.38);
+    }
     .btn-secondary {
       background: rgba(255,255,255,.06);
       color: var(--text);
@@ -419,7 +426,8 @@
       border: 1px solid rgba(59,130,246,.22);
     }
 
-    .stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    /* Distribución de escritorio: 3 tarjetas arriba y 3 abajo. */
+    .stack-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
     .stack-card {
       background: var(--card);
       border: 1px solid var(--card-border);
@@ -786,7 +794,8 @@
       <a href="#stack">Stack</a>
       <a href="#proyectos">Proyectos</a>
       <a href="#contacto">Contacto</a>
-      <a class="btn-nav-cv" href="Marin_Joaquin_CV_Profesional.pdf.pdf" download>Descargar CV</a>
+      <!-- CAMBIO RECLUTAMIENTO: Referencia corregida al CV con una sola extensión. -->
+      <a class="btn-nav-cv" href="Marin_Joaquin_CV_Profesional.pdf" download>Descargar CV</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Abrir menú">
       <span></span><span></span><span></span>
@@ -798,7 +807,7 @@
     <a href="#stack">Stack</a>
     <a href="#proyectos">Proyectos</a>
     <a href="#contacto">Contacto</a>
-    <a href="Marin_Joaquin_CV_Profesional.pdf.pdf" download style="color:var(--cyan);font-weight:700;">Descargar CV</a>
+    <a href="Marin_Joaquin_CV_Profesional.pdf" download style="color:var(--cyan);font-weight:700;">Descargar CV</a>
   </div>
 </header>
 
@@ -821,10 +830,11 @@
           reportes y soluciones internas para empresas.
         </p>
 
+        <!-- CAMBIO RECLUTAMIENTO: Contactar pasa a ser el CTA principal del hero. -->
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
-          <a class="btn btn-secondary" href="Marin_Joaquin_CV_Profesional.pdf.pdf" download>Descargar CV</a>
-          <a class="btn btn-secondary" href="#contacto">Contactar</a>
+          <a class="btn btn-secondary" href="#proyectos">Ver proyectos</a>
+          <a class="btn btn-secondary" href="Marin_Joaquin_CV_Profesional.pdf" download>Descargar CV</a>
+          <a class="btn btn-primary btn-contact" href="#contacto">Contactar</a>
         </div>
       </div>
 
@@ -846,21 +856,22 @@
   </section>
 
   <!-- ── Sobre mí ── -->
+  <!-- CAMBIO RECLUTAMIENTO: Perfil ampliado más allá del desarrollo de código. -->
   <section id="sobre-mi">
     <div class="container">
       <div class="section-head reveal">
         <span class="section-label">Perfil</span>
         <h2>Sobre <em>mí</em></h2>
-        <p>Perfil orientado a crear soluciones prácticas para procesos reales de negocio, combinando desarrollo web, bases de datos, soporte TI y mejora continua.</p>
+        <p>Perfil orientado a resolver problemas reales de negocio combinando desarrollo Fullstack, análisis de datos, visión comercial y mejora continua.</p>
       </div>
       <div class="about">
         <div class="panel reveal">
           <h3>Perfil profesional</h3>
-          <p>Ingeniero en Informática titulado de Duoc UC, con experiencia en desarrollo de aplicaciones web, soporte TI, consultas SQL, mantenimiento de sistemas y creación de soluciones internas para entornos empresariales.</p>
+          <p>Ingeniero en Informática titulado de Duoc UC, con experiencia en desarrollo Fullstack de aplicaciones empresariales, soporte TI, consultas SQL y construcción de soluciones internas. También cuento con competencias en análisis de datos, estadística, marketing digital y gestión de redes sociales para conectar la tecnología con los objetivos del negocio.</p>
         </div>
         <div class="panel reveal">
           <h3>Enfoque</h3>
-          <p>Me especializo en sistemas de gestión, inventario, operaciones, dashboards, autenticación de usuarios, roles, filtros avanzados, reportes y trazabilidad de procesos.</p>
+          <p>Me especializo en sistemas de gestión, inventario, operaciones, dashboards, autenticación, roles, filtros avanzados y reportes. Además, trabajo e integro distintos modelos de Inteligencia Artificial —como LLMs y APIs de IA— para automatizar tareas, optimizar procesos y potenciar soluciones tecnológicas de forma práctica y medible.</p>
         </div>
       </div>
     </div>
@@ -904,7 +915,7 @@
       <div class="section-head reveal">
         <span class="section-label">Tecnologías</span>
         <h2>Stack <em>tecnológico</em></h2>
-        <p>Tecnologías utilizadas en desarrollo fullstack, plataformas empresariales y sistemas operacionales.</p>
+        <p>Tecnologías y competencias aplicadas al desarrollo Fullstack, la operación empresarial, el análisis de información y la innovación con IA.</p>
       </div>
       <div class="stack-grid">
         <div class="stack-card reveal">
@@ -919,6 +930,17 @@
           <h3>Base de Datos</h3>
           <p>PostgreSQL, MySQL, SQLite, MSSQL, Prisma ORM, Eloquent ORM.</p>
         </div>
+        <!-- CAMBIO RECLUTAMIENTO: Nuevas competencias de análisis, negocio y marketing. -->
+        <div class="stack-card reveal">
+          <h3>Análisis y Datos</h3>
+          <p>Análisis de Datos, Estadística, Modelos de Regresión Lineal, Marketing Digital.</p>
+        </div>
+        <!-- CAMBIO RECLUTAMIENTO: Nueva subsección de Inteligencia Artificial. -->
+        <div class="stack-card reveal">
+          <h3>Inteligencia Artificial</h3>
+          <p>LLMs, Integración de APIs de IA, ChatGPT, Gemini, Claude.</p>
+        </div>
+        <!-- Herramientas pasa a la segunda fila para completar la cuadrícula 3 x 2. -->
         <div class="stack-card reveal">
           <h3>Herramientas</h3>
           <p>Git, GitHub Actions, ExcelJS, PDFKit, Nodemailer, ODBC.</p>
@@ -958,7 +980,7 @@
               <h3>Taller PepsiCo</h3>
               <span class="badge-tesis">Tesis</span>
             </div>
-            <p>Plataforma web para gestionar operación de taller/flota: ingreso de vehículos, órdenes de trabajo, repuestos, inventario, notificaciones y dashboards por rol.</p>
+            <p>Plataforma web que centraliza la operación de taller y flota: vehículos, órdenes de trabajo, repuestos, inventario, notificaciones y dashboards por rol para mejorar el control y la continuidad operativa.</p>
             <div class="project-tags">
               <span class="mini-tag">React</span>
               <span class="mini-tag">TypeScript</span>
@@ -994,7 +1016,7 @@
           </div>
           <div class="project-body">
             <h3 style="margin-bottom:10px;">Market Web</h3>
-            <p>Sistema multi-local de gestión comercial con inventario, ventas POS, historial de ventas, cambios de precios, roles y separación de datos por local.</p>
+            <p>Sistema multi-local de gestión comercial que conecta inventario, ventas POS, historial, cambios de precios y roles para dar mayor trazabilidad y control a la operación de cada local.</p>
             <div class="project-tags">
               <span class="mini-tag">Laravel</span>
               <span class="mini-tag">PHP</span>
@@ -1026,7 +1048,7 @@
           </div>
           <div class="project-body">
             <h3 style="margin-bottom:10px;">Inventario TI</h3>
-            <p>Aplicación web para gestionar activos tecnológicos, asignaciones por área, estado de equipos, historial de cambios, búsqueda, exportación Excel y QR.</p>
+            <p>Aplicación web que centraliza activos tecnológicos, asignaciones, estados e historial de cambios, reduciendo el tiempo de consulta y facilitando exportaciones Excel y códigos QR.</p>
             <div class="project-tags">
               <span class="mini-tag">Node.js</span>
               <span class="mini-tag">Express</span>
@@ -1060,7 +1082,8 @@
           </div>
           <div class="project-body">
             <h3 style="margin-bottom:10px;">Sistema Fruta</h3>
-            <p>Plataforma interna para operaciones de fruta: pallets, packing, frío, mantenedores, consultas productivas y filtros por planta, especie y fechas.</p>
+            <!-- CAMBIO RECLUTAMIENTO: Descripción enfocada en impacto operativo y toma de decisiones. -->
+            <p>Plataforma interna para operaciones de fruta que integra pallets, packing, frío, mantenedores y consultas productivas. Sus filtros por planta, especie y fechas optimizan la trazabilidad y agilizan la toma de decisiones operativas.</p>
             <div class="project-tags">
               <span class="mini-tag">Node.js</span>
               <span class="mini-tag">Express</span>
@@ -1088,7 +1111,8 @@
           </div>
           <div class="project-body">
             <h3 style="margin-bottom:10px;">Mantenedor de Pallets y Exportación</h3>
-            <p>Aplicación interna para consultar y actualizar información operativa de pallets, incorporando filtros avanzados y mejoras de rendimiento para grandes volúmenes de datos.</p>
+            <!-- CAMBIO RECLUTAMIENTO: Descripción enfocada en eficiencia y reducción de tiempos. -->
+            <p>Aplicación interna para consultar y actualizar información operativa de pallets. Incorpora filtros avanzados y mejoras de rendimiento que reducen los tiempos de consulta y facilitan el trabajo con grandes volúmenes de datos.</p>
             <div class="project-tags">
               <span class="mini-tag">Node.js</span>
               <span class="mini-tag">Express</span>
@@ -1121,7 +1145,7 @@
           </div>
           <div class="project-body">
             <h3 style="margin-bottom:10px;">MarketDesktop</h3>
-            <p>Primera iteración de sistema POS en formato escritorio, orientado a gestión comercial, productos y operaciones locales, posteriormente evolucionado hacia Market Web.</p>
+            <p>Primera iteración de un sistema POS de escritorio para gestión comercial, productos y operaciones locales; sirvió como base funcional para evolucionar posteriormente hacia Market Web.</p>
             <div class="project-tags">
               <span class="mini-tag">Desktop App</span>
               <span class="mini-tag">POS</span>
