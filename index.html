@@ -972,9 +972,26 @@
           </div>
         </article>
 
-        <!-- Market Web (sin capturas) -->
+        <!-- Market Web -->
         <article class="project-card reveal">
-          <div class="proj-placeholder">Market Web</div>
+          <div class="carousel" id="carousel-marketweb" title="Clic para ampliar">
+            <img class="carousel-slide active" src="images/MarketWeb0.png" alt="Market Web — Inicio de sesión" />
+            <img class="carousel-slide" src="images/MarketWeb1.png" alt="Market Web — Dashboard de administración" loading="lazy" />
+            <img class="carousel-slide" src="images/MarketWeb2.png" alt="Market Web — Punto de venta" loading="lazy" />
+            <img class="carousel-slide" src="images/MarketWeb3.png" alt="Market Web — Gestión de productos" loading="lazy" />
+            <img class="carousel-slide" src="images/MarketWeb4.png" alt="Market Web — Inventario" loading="lazy" />
+            <img class="carousel-slide" src="images/MarketWeb5.png" alt="Market Web — Movimientos de stock" loading="lazy" />
+            <img class="carousel-slide" src="images/MarketWeb6.png" alt="Market Web — Historial de ventas" loading="lazy" />
+            <img class="carousel-slide" src="images/MarketWeb7.png" alt="Market Web — Reportes" loading="lazy" />
+            <img class="carousel-slide" src="images/MarketWeb8.png" alt="Market Web — Dashboard de vendedor" loading="lazy" />
+            <button class="c-btn c-prev" aria-label="Anterior">&#8249;</button>
+            <button class="c-btn c-next" aria-label="Siguiente">&#8250;</button>
+            <div class="c-dots">
+              <span class="c-dot active"></span><span class="c-dot"></span><span class="c-dot"></span>
+              <span class="c-dot"></span><span class="c-dot"></span><span class="c-dot"></span>
+              <span class="c-dot"></span><span class="c-dot"></span><span class="c-dot"></span>
+            </div>
+          </div>
           <div class="project-body">
             <h3 style="margin-bottom:10px;">Market Web</h3>
             <p>Sistema multi-local de gestión comercial con inventario, ventas POS, historial de ventas, cambios de precios, roles y separación de datos por local.</p>
@@ -986,7 +1003,7 @@
               <span class="mini-tag">DataTables</span>
             </div>
             <div class="project-actions">
-              <a class="btn-demo" href="#" target="_blank">Ver demo</a>
+              <a class="btn-demo" href="https://market-web-demo.vercel.app/" target="_blank" rel="noopener">Ver demo</a>
             </div>
           </div>
         </article>
@@ -1244,6 +1261,18 @@
     'images/Taller%20PepsiCo3.png',
     'images/Taller%20PepsiCo4.png',
     'images/Taller%20PepsiCo5.png',
+  ]);
+
+  initCarousel('carousel-marketweb', [
+    'images/MarketWeb0.png',
+    'images/MarketWeb1.png',
+    'images/MarketWeb2.png',
+    'images/MarketWeb3.png',
+    'images/MarketWeb4.png',
+    'images/MarketWeb5.png',
+    'images/MarketWeb6.png',
+    'images/MarketWeb7.png',
+    'images/MarketWeb8.png',
   ]);
 
   initCarousel('carousel-inventario', [
